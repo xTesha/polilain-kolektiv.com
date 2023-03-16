@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	
+
+
+
+<div class="hero-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="circle"></div>
+					<h1>POLILAIN KOLEKTIV</h1>
+					<p>You imagine, we visualize</p>
+
+
+					
+					<a href="#projects">
+						<svg class="arrows">
+						  <path class="a1" d="M0 0 L30 32 L60 0"></path>
+						  <path class="a2" d="M0 20 L30 52 L60 20"></path>
+						  <path class="a3" d="M0 40 L30 72 L60 40"></path>
+						</svg>
+					</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	<div class="main-content" align="center">
+		<h5 id="projects">PROJECTS</h5>
+
+	{% for image, name in imageList %}
+				<div class="projekti">
+					<img class="slika" src="{{url_for('static', filename = image)}}"></img>
+					<a class="btn" href="{{ url_for('project', projectname=name) }}"><span>{{ name.replace("_", " ") }}</span></a>
+				</div>
+			{% endfor %}
+
+			
+			
+			<div class="pagination">
+    {% if page > 1 %}
+    <a class="leftArrow" href="{{ url_for('render_home', page=page-1) }}#projects"></a>
+    {% endif %}
+    {% if page < pages %}
+    <a class="rightArrow" href="{{ url_for('render_home', page=page+1) }}#projects"></a>
+    {% endif %}
+</div>
+
+<footer>
+    <ul class="icons">
+      <li><a href="https://wa.me/381616507052">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/polilain-kolektiv">
+          <i class="fa-brands fa-linkedin"></i>
+        </a></li>
+      <li><a href="#">
+          <i class="fa-brands fa-facebook"></i>
+        </a></li>
+      <li><a href="https://www.instagram.com/polilain_kolektiv/">
+          <i class="fa-brands fa-instagram"></i>
+        </a></li>
+        <p class="contactMail">Contact Us: marko.neskovic@polilain-kolektiv.com</p>
+    </ul>
+    <div class="footer-copyright">
+      <p>Made by <a class="mojLinkedin" href="https://www.linkedin.com/in/andrija-tesovic-3b9229220/">Andrija Tesovic</a></p>
+      <p>Copyright @ 2023 All Rights Reserved.</p>
+
+    </div>
+  </footer>
+
+{% endblock %}
+

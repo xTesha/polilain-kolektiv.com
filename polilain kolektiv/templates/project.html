@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--Slider-->
+<div id="slider">  
+    <h4 class="projectName">{{projectname.replace("_", " ")}}</h4>
+  {% for i in range(1, number_of_images+1) %}
+  <div class="slide">
+    
+    <img src="{{ url_for('static', filename=images_folder+'/'+projectname+'/img'+i|string+'.jpg') }}" >
+   
+  </div>
+    {% endfor %} 
+    <div id="dots-con">
+{% for i in range(1, number_of_images+1) %}
+      <span class="dot"></span>
+      {% endfor %}  
+  </div>
+  
+  <!--Controlling arrows-->
+  <span class="controls" onclick="prevSlide(-1)" id="left-arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</span>
+  <span class="controls" id="right-arrow" onclick="nextSlide(1)"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+</span>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+<!--  style="background-image: url({{ url_for('static', filename=images_folder+'/'+projectname+'/img'+1|string+'.jpg') }});" -->
